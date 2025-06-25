@@ -75,6 +75,7 @@ it can be using any framework to handle user interaction to chatbot. in this par
 -  Redis (Optional, Caching and chat history)
 -  RabbitMQ producer and consumer
 -  LLM Model (Claude or Deepseek for thinking model)
+-  Embedding model (Mistral or nomic embedding model)
 -  JWT (Optional)
 -  Google Auth (Optional)
 
@@ -99,3 +100,25 @@ it handles data parsing, validation and cleansing for big data. it uses:
 -  Pyspark
 -  RabbitMQ producer and consumer
 -  PostgreSQL
+
+## Technical Decision
+
+### 1. n8n
+
+n8n is a popular self-hosted workflow automation. this framework is popular and have many support in building AI workflow and integration with many systems. it also ease cognitive burden in developing `Chatbot Graph`.
+
+### 2. Vector Based Memory
+
+As input grows, it can be hard to track context. to make it easier and faster for model to retrieve data. Vector based memory can be used to store retrieved context from MCP.
+
+### 3. Model Context Protocol (MCP)
+
+MCP is a new standardized protocol for LLM model to retrieve context. it can be flexibly defined context and ensure ease in updating context retrieval.
+
+### 4. Python
+
+Python can leverage vast data processing support to capture window and process data to ensure SOW is fulfilled.
+
+### 5. PostgreSQL
+
+PostgreSQL is newer rich feature open-source database. it can use it's strict element of SQL to ensure ACID. however, if needed it also can store JSON.
